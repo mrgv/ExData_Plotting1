@@ -9,10 +9,14 @@ t <- subset(t, t$DateTime >= as.POSIXct("2007-02-01") &
 #t[, 1] <- as.Date(t[, 1], format = "%d/%m/%Y")
 #t <- subset(t, t$Date >= "2007-02-01" & t$Date <= "2007-02-02")
 
+#This below par(pch=" "), or plot(..., type = "n") stops the actual points 
+# from being on the plot..
+png(file = "plot2.png", width = 480, height = 480)
+
 par(pch = " ")
 plot(t$DateTime, t$Global_active_power, 
      xlab="", ylab="Global Active Power (kilowatts)")
 lines(t$DateTime, t$Global_active_power)
 
-dev.copy(png, file = "plot2.png", width = 480, height = 480)
+#dev.copy(png, file = "plot2.png", width = 480, height = 480)
 dev.off()

@@ -7,12 +7,10 @@ t$DateTime <- as.POSIXct(paste(t$Date, t$Time), format="%d/%m/%Y %H:%M:%S")
 t <- subset(t, t$DateTime >= as.POSIXct("2007-02-01") & 
                 t$DateTime < as.POSIXct("2007-02-03"))
 
-
 png(file = "plot4.png", width = 480, height = 480)
 par(pch = " ", mfcol = c(2,2))
 
 #--PLOT2 TOP_LEFT
-par(pch = " ")
 plot(t$DateTime, t$Global_active_power, 
      xlab="", ylab="Global Active Power")
 lines(t$DateTime, t$Global_active_power)
@@ -38,5 +36,7 @@ plot(t$DateTime, t$Global_reactive_power,
 lines(t$DateTime, t$Global_reactive_power)
 
 #Comment below, print straight to png device to resolve some formatting issues.
+# Changed other files to use png device as well.. Getting inconsistent results
+# otherwise.
 #dev.copy(png, file = "plot4.png", width = 480, height = 480, res=50)
 dev.off()
